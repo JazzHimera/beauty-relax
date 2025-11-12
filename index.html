@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domovská web stránka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff0f5;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      background: linear-gradient(90deg, #8a2be2, #ff69b4);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    nav { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+    nav a { color: white; font-weight: bold; transition: 0.3s; }
+    nav a:hover { text-decoration: underline; }
+
+    section {
+      padding: 70px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    .photo-section img {
+      max-width: 80%;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .photo-section img:hover { transform: scale(1.05); }
+
+    .contact-info { margin-top: 20px; line-height: 1.8; }
+    .contact-form { margin-top: 30px; }
+    .contact-form input, .contact-form textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .contact-form button {
+      background: linear-gradient(90deg, #8a2be2, #ff69b4);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, #ff69b4, #8a2be2);
+    }
+
+    footer {
+      background: #ff69b4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 10px; }
+      .contact-form input, .contact-form textarea { width: 95%; }
+      .photo-section img { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Domovská web stránka</h1>
+    <nav>
+      <a href="#onas">O nás</a>
+      <a href="#sluzby">Služby s cenou</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section id="onas" class="section">
+    <h2>O nás</h2>
+    <p><strong>Doprajte si chvíľku len pre seba. Profesionálna starostlivosť, kvalitné produkty a relax v príjemnom prostredí.</strong></p>
+  </section>
+
+  <section id="sluzby" class="section">
+    <h2>Služby s cenou</h2>
+    <div class="photo-section">
+    </div>
+    <p><strong>Сeny služieb:</strong></p>
+    <ul style="list-style:none; padding:0; font-size:18px; line-height:1.8;">
+      <li>💆‍♀️ Kozmetika – 35 €</li>
+      <li>💆 Masáže – 40 €</li>
+      <li>💅 Manikúra & pedikúra – 25 €</li>
+      <li>🕯️ Relaxačné rituály – 50 €</li>
+    </ul>
+  </section>
+
+  <section id="kontakt" class="section">
+    <h2>Kontakt</h2>
+    <div class="contact-info">
+      <p>Adresa: Dunajská 58, Bratislava, PSČ</p>
+      <p>Telefón: +421 951 336 276</p>
+      <p>E-mail: maxp56272@gmail.com</p>
+      <p>Otváracie hodiny: Po-Ne 08.00-19.00</p>
+      <p>Odkaz na sociálne siete FB, IG</p>
+    </div>
+    <div class="contact-form">
+      <h3>Napíšte nám, radi vám odpovieme</h3>
+      <input type="text" placeholder="Meno" />
+      <input type="email" placeholder="E-mail" />
+      <textarea rows="5" placeholder="Správa"></textarea>
+      <br/>
+      <button type="submit">Odoslať</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Tvoja domovská stránka
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
+
